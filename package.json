@@ -1,0 +1,13 @@
+{
+  "name": "jujutsu-party-builder",
+  "version": "1.0.0",
+  "description": "パーティ編成ツール",
+  "main": "index.html",
+  "scripts": {
+    "build": "docker build -t jujutsu-party-builder .",
+    "run": "docker run -p 8080:80 jujutsu-party-builder"
+  },
+  "keywords": ["jujutsu", "party", "builder"],
+  "author": "Your Name",
+  "license": "MIT"
+}
