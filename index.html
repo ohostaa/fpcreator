@@ -1,66 +1,49 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>呪術廻戦ファントムパレード - パーティ編成ツール</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>呪術廻戦ファントムパレード - パーティ編成</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>呪術廻戦ファントムパレード</h1>
-            <p>パーティ編成ツール</p>
-        </div>
 
-        <div class="controls">
-            <button class="btn btn-reset" onclick="resetParty()">リセット</button>
-            <button class="btn btn-screenshot" onclick="takeScreenshot()">スクリーンショット</button>
-        </div>
-
-        <div class="party-section">
-            <div class="section-title">キャラクター編成</div>
-            <div class="position-labels">
-                <div class="position-label">1st Position</div>
-                <div class="position-label">2nd Position</div>
-                <div class="position-label">3rd Position</div>
-                <div class="position-label">4th Position</div>
-                <div class="position-label">Sub Position</div>
-            </div>
-            <div class="character-grid" id="characterGrid">
-                <!-- JavaScript で生成 -->
-            </div>
-        </div>
-
-        <div class="party-section">
-            <div class="section-title">廻想残滓</div>
-            <div class="position-labels">
-                <div class="position-label">残滓 1</div>
-                <div class="position-label">残滓 2</div>
-                <div class="position-label">残滓 3</div>
-                <div class="position-label">残滓 4</div>
-                <div class="position-label">残滓 5</div>
-            </div>
-            <div class="remnant-grid" id="remnantGrid">
-                <!-- JavaScript で生成 -->
-            </div>
-        </div>
+  <h2>キャラクターを選んでね</h2>
+  <div id="captureArea">
+    <div class="square-container" id="mainSlots">
+      <div class="square" onclick="openModal(this, 'character')"></div>
+      <div class="square" onclick="openModal(this, 'character')"></div>
+      <div class="square" onclick="openModal(this, 'character')"></div>
+      <div class="square" onclick="openModal(this, 'character')"></div>
+      <div class="square" onclick="openModal(this, 'character')"></div>
     </div>
 
-    <!-- 画像選択モーダル -->
-    <div class="image-selector" id="imageSelector">
-        <div class="selector-content">
-            <button class="close-btn" onclick="closeSelector()">&times;</button>
-            <div class="selector-title" id="selectorTitle">選択してください</div>
-            <div class="image-grid" id="imageGrid">
-                <!-- JavaScript で生成 -->
-            </div>
-        </div>
+    <h2>残滓を選んでね</h2>
+    <div class="square-container" id="extraSlots">
+      <div class="square small" onclick="openModal(this, 'remnant')"></div>
+      <div class="square small" onclick="openModal(this, 'remnant')"></div>
+      <div class="square small" onclick="openModal(this, 'remnant')"></div>
+      <div class="square small" onclick="openModal(this, 'remnant')"></div>
+      <div class="square small" onclick="openModal(this, 'remnant')"></div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <div class="button-row">
+    <button onclick="resetAll()">リセット</button>
+    <button onclick="takeScreenshot()">スクショ</button>
+  </div>
+
+  <!-- モーダル -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <p id="modalTitle">選んでね</p>
+      <div id="imageOptions">
+        <!-- JavaScript で画像オプションを生成 -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+
 </body>
 </html>
