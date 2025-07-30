@@ -6,6 +6,12 @@ WORKDIR /usr/share/nginx/html
 # HTMLファイルをコピー
 COPY index.html .
 
+# CSSファイルをコピー
+COPY style.css .
+
+# JSファイルをコピー
+COPY script.js .
+
 # 画像フォルダをコピー
 COPY image/ ./image/
 
