@@ -1,49 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>呪術廻戦ファントムパレード - パーティ編成</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ファンパレ編成メーカー</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <h2>キャラクターを選んでね</h2>
-  <div id="captureArea">
-    <div class="square-container" id="mainSlots">
-      <div class="square" onclick="openModal(this, 'character')"></div>
-      <div class="square" onclick="openModal(this, 'character')"></div>
-      <div class="square" onclick="openModal(this, 'character')"></div>
-      <div class="square" onclick="openModal(this, 'character')"></div>
-      <div class="square" onclick="openModal(this, 'character')"></div>
+  <header class="app-header">
+    <h1>ファンパレ 編成メーカー</h1>
+    <div class="header-actions">
+      <button id="themeBtn" title="テーマ切替">🌓</button>
+      <button id="resetBtn">リセット</button>
+      <button id="shareBtn">共有リンク</button>
+      <button id="importBtn">コード読込</button>
+      <button id="shotBtn">スクショ</button>
     </div>
+  </header>
 
-    <h2>残滓を選んでね</h2>
-    <div class="square-container" id="extraSlots">
-      <div class="square small" onclick="openModal(this, 'remnant')"></div>
-      <div class="square small" onclick="openModal(this, 'remnant')"></div>
-      <div class="square small" onclick="openModal(this, 'remnant')"></div>
-      <div class="square small" onclick="openModal(this, 'remnant')"></div>
-      <div class="square small" onclick="openModal(this, 'remnant')"></div>
+  <main>
+    <section class="panel">
+      <h2>キャラクター</h2>
+      <div id="mainSlots" class="slot-row" data-type="character" aria-label="キャラスロット5枠"></div>
+    </section>
+
+    <section class="panel">
+      <h2>残滓</h2>
+      <div id="extraSlots" class="slot-row small" data-type="remnant" aria-label="残滓スロット5枠"></div>
+    </section>
+  </main>
+
+  <dialog id="pickerDialog">
+    <div class="dialog-head">
+      <input id="searchBox" type="search" placeholder="名前・属性で検索…" />
+      <button id="closeDlg" class="ghost">閉じる</button>
     </div>
-  </div>
+    <div id="optionGrid" class="image-grid" role="listbox" aria-label="画像一覧"></div>
+  </dialog>
 
-  <div class="button-row">
-    <button onclick="resetAll()">リセット</button>
-    <button onclick="takeScreenshot()">スクショ</button>
-  </div>
-
-  <!-- モーダル -->
-  <div class="modal" id="imageModal">
-    <div class="modal-content">
-      <p id="modalTitle">選んでね</p>
-      <div id="imageOptions">
-        <!-- JavaScript で画像オプションを生成 -->
-      </div>
-    </div>
-  </div>
+  <template id="slotTemplate">
+    <button class="slot" type="button">
+      <img alt="" />
+      <span class="placeholder">＋</span>
+      <span class="badge"></span>
+      <span class="remove" title="クリア">✕</span>
+    </button>
+  </template>
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="script.js"></script>
-
+  <script src="./script.js"></script>
 </body>
 </html>
